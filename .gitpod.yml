@@ -1,5 +1,4 @@
 image:
   file: Dockerfile
 tasks:
-  - command: echo Terminal1
-  - command: echo Terminal2
+  - command: perl -Isrc -c src/Server/Router.pm
