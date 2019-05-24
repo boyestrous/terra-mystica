@@ -1,0 +1,5 @@
+image:
+  file: Dockerfile
+tasks:
+  - command: >
+  -perl -MCPAN -e install Moose
