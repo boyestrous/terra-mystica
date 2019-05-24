@@ -6,8 +6,6 @@ USER root
 RUN sudo apt-get update
 
 USER gitpod
-# Apply user-specific settings
-ENV ...
 
 # Give back control
 USER root
