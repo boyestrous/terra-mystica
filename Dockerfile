@@ -4,7 +4,7 @@ USER root
 # Install custom tools, runtime, etc.
 #RUN sudo apt-get update
 RUN curl -L http://cpanmin.us | perl - App::cpanminus
-RUN cpanm Moose
+RUN cpanm Moose JSON
 
 
 USER gitpod
