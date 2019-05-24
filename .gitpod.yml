@@ -1,6 +1,5 @@
 image:
   file: Dockerfile
 tasks:
-  - command: perl -MCPAN -e install Moose
   - command: echo Terminal1
   - command: echo Terminal2
