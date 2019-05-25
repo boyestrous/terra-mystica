@@ -4,8 +4,7 @@ USER root
 # Install custom tools, runtime, etc.
 #RUN sudo apt-get update
 RUN curl -L http://cpanmin.us | perl - App::cpanminus
-RUN cpanm Moose JSON Method::Signatures::Simple Exporter::Easy DBI Bytes::Random::Secure Crypt::Eksblowfish::Bcrypt Crypt::CBC Util::CryptUtil Server::Session Server::Alias
-
+RUN cpanm Moose JSON Method::Signatures::Simple Exporter::Easy DBI Bytes::Random::Secure Crypt::Eksblowfish::Bcrypt Crypt::CBC Util::CryptUtil
 
 USER gitpod
 
