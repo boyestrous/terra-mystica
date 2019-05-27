@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y emacs23-nox
 RUN apt-get -y install postgresql postgresql-contrib mysql-server mysql-client
 
 USER gitpod
-mkdir public
-mkdir public/www_prod
+RUN mkdir public
+RUN mkdir public/www-prod
 
 # Give back control
 USER root
