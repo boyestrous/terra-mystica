@@ -5,8 +5,7 @@ USER root
 #RUN sudo apt-get update
 RUN curl -L http://cpanmin.us | perl - App::cpanminus
 RUN cpanm Moose JSON Method::Signatures::Simple Exporter::Easy DBI Bytes::Random::Secure Crypt::Eksblowfish::Bcrypt Crypt::CBC File::Slurp
-RUN sudo apt-get install emacs
-RUN sudo apt install postgresql
+RUN apt-get update && apt-get install -y emacs23-nox
 
 USER gitpod
 
