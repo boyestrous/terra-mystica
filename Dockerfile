@@ -20,7 +20,6 @@ pg_ctl -D ~/pg/data/ -l ~/pg/logs/log -o "-k ~/pg/sockets" stop' > ~/pg/scripts/
 RUN chmod +x ~/pg/scripts/*
 ENV PATH="$HOME/pg/scripts:$PATH"
 RUN sudo service postgresql start
-RUN psql createdb terra-mystica
 
 USER gitpod
 
