@@ -1,4 +1,5 @@
 image:
   file: Dockerfile
 tasks:
-  - command: perl -Isrc -c src/Server/Router.pm
+  - command: mkdir www-prod
+  - command: perl deploy.pl www-prod
