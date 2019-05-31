@@ -7,6 +7,7 @@ RUN curl -L http://cpanmin.us | perl - App::cpanminus
 RUN cpanm Moose JSON Method::Signatures::Simple Exporter::Easy DBI Bytes::Random::Secure Crypt::Eksblowfish::Bcrypt Crypt::CBC File::Slurp
 RUN apt-get update && apt-get install -y emacs23-nox
 RUN apt-get -y install postgresql postgresql-contrib mysql-server mysql-client
+EXPOSE 5432
 
 # Setup postgres server for user gitpod
 USER gitpod
@@ -19,6 +20,7 @@ pg_ctl -D ~/pg/data/ -l ~/pg/logs/log -o "-k ~/pg/sockets" stop' > ~/pg/scripts/
 RUN chmod +x ~/pg/scripts/*
 ENV PATH="$HOME/pg/scripts:$PATH"
 RUN sudo service postgresql start
+RUN psql createdb terra-mystica
 
 USER gitpod
 
