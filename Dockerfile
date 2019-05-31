@@ -8,13 +8,16 @@ RUN cpanm Moose JSON Method::Signatures::Simple Exporter::Easy DBI Bytes::Random
 RUN apt-get update && apt-get install -y emacs23-nox
 RUN apt-get -y install postgresql postgresql-contrib mysql-server mysql-client
 
-#Postgres create db, set users
-RUN pg_ctl -D /usr/local/var/postgres start
-RUN su - postgres
-RUN psql createdb terra-mystica
-RUN psql terra-mystica < schema/schema.sql
-RUN psql createuser gitpod -s
-
+# Setup postgres server for user gitpod
+USER gitpod
+ENV PATH="/usr/lib/postgresql/10/bin:$PATH"
+RUN mkdir -p ~/pg/data; mkdir -p ~/pg/scripts; mkdir -p ~/pg/logs; mkdir -p ~/pg/sockets; initdb -D pg/data/
+RUN echo '#!/bin/bash\n\
+pg_ctl -D ~/pg/data/ -l ~/pg/logs/log -o "-k ~/pg/sockets" start' > ~/pg/scripts/pg_start.sh
+RUN echo '#!/bin/bash\n\
+pg_ctl -D ~/pg/data/ -l ~/pg/logs/log -o "-k ~/pg/sockets" stop' > ~/pg/scripts/pg_stop.sh
+RUN chmod +x ~/pg/scripts/*
+ENV PATH="$HOME/pg/scripts:$PATH"
 
 USER gitpod
 RUN mkdir public
