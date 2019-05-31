@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y emacs23-nox
 RUN apt-get -y install postgresql postgresql-contrib mysql-server mysql-client
 
 #Postgres create db, set users
+RUN pg_ctl -D /usr/local/var/postgres start
 RUN su - postgres
 RUN psql createdb terra-mystica
 RUN psql terra-mystica < schema/schema.sql
