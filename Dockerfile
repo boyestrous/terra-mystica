@@ -18,10 +18,9 @@ RUN echo '#!/bin/bash\n\
 pg_ctl -D ~/pg/data/ -l ~/pg/logs/log -o "-k ~/pg/sockets" stop' > ~/pg/scripts/pg_stop.sh
 RUN chmod +x ~/pg/scripts/*
 ENV PATH="$HOME/pg/scripts:$PATH"
+RUN sudo service postgresql start
 
 USER gitpod
-RUN mkdir public
-RUN mkdir public/www-prod
 
 # Give back control
 USER root
