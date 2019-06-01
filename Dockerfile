@@ -2,7 +2,9 @@ FROM gitpod/workspace-postgres
 
 USER root
 # Install custom tools, runtime, etc.
-#RUN sudo apt-get update
+RUN apt-get update \
+ && apt-get -y install apache2 multitail \
+ && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 RUN curl -L http://cpanmin.us | perl - App::cpanminus
 RUN cpanm Moose JSON Method::Signatures::Simple Exporter::Easy DBI Bytes::Random::Secure Crypt::Eksblowfish::Bcrypt Crypt::CBC File::Slurp
 RUN apt-get update && apt-get install -y emacs23-nox
